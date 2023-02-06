@@ -1,4 +1,4 @@
-package com.gianlucaveschi.randomusersapp.data.model
+package com.gianlucaveschi.randomusersapp.domain.model
 
 data class Name(
     val first: String,

@@ -8,6 +8,7 @@
 - Create API service to get 10 users only :heavy_check_mark:
 - Create Repo, ViewModel and fetch raw data :heavy_check_mark:
 - Create parameterized service :heavy_check_mark:
+- Create Domain Model & Mapper
 
 # Random Notes
 - Exclude login from api response because it's an intensive field according to the DOCs.

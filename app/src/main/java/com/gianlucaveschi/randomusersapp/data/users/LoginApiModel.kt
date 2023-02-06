@@ -1,6 +1,6 @@
-package com.gianlucaveschi.randomusersapp.data.model
+package com.gianlucaveschi.randomusersapp.data.users
 
-data class Login(
+data class LoginApiModel(
     val md5: String,
     val password: String,
     val salt: String,

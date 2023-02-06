@@ -1,6 +1,6 @@
-package com.gianlucaveschi.randomusersapp.data.model
+package com.gianlucaveschi.randomusersapp.data.users
 
-data class Info(
+data class ApiResponseInfoApiModel(
     val page: Int,
     val results: Int,
     val seed: String,

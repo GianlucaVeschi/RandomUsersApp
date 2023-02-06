@@ -19,7 +19,7 @@ class MainViewModel @Inject constructor(
             when (val response = randomUsersRepository.getUsers()) {
                 is Resource.Success -> {
                     Timber.d("Success ${response.data}")
-                    Timber.d("Success ${response.data?.results?.size}")
+                    Timber.d("Success ${response.data?.users?.size}")
                 }
                 is Resource.Error -> {
                     Timber.d("Error ${response.message}")
