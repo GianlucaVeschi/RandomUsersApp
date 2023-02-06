@@ -6,3 +6,6 @@
 - Clean up gradle files
 - Create API model
 - Create API service to get 10 users only
+
+# Random Notes
+- Exclude login from api response because it's an intensive field according to the DOCs.

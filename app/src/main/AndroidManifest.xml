@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RandomUsersApp">
         <activity
-            android:name="com.gianlucaveschi.randomusersapp.MainActivity"
+            android:name="com.gianlucaveschi.randomusersapp.presentation.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.RandomUsersApp">
             <intent-filter>
