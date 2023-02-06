@@ -40,7 +40,7 @@ class MainViewModel @Inject constructor(
     }
 
     private fun updateSuccessState(users: Users) {
-        Timber.d("Success ${users}")
+        Timber.d("Success $users")
         _state.value = _state.value.copy(
             data = users,
             isLoading = false,

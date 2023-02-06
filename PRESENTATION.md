@@ -1,4 +1,5 @@
 # Introduction
+Welcome to 
 
 # Workflow
 - Read Instructions :heavy_check_mark:
@@ -8,7 +9,11 @@
 - Create API service to get 10 users only :heavy_check_mark:
 - Create Repo, ViewModel and fetch raw data :heavy_check_mark:
 - Create parameterized service :heavy_check_mark:
-- Create Domain Model & Mapper
+- Create Domain Model & Mapper :heavy_check_mark:
+- Create UI Model :heavy_check_mark:
+- Display UI Model in the presentation layer :heavy_check_mark:
+- Create a decent UI
+- 
 
 # Random Notes
 - Exclude login from api response because it's an intensive field according to the DOCs.

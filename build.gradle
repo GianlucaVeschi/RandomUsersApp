@@ -7,6 +7,7 @@ buildscript {
         retrofit_version = "2.9.0"
         okhttp_version = "5.0.0-alpha.3"
         timber_version = "5.0.1"
+        coil_version = "1.3.1"
     }
     dependencies {
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_agp_version"

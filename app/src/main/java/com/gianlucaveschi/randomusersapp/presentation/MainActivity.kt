@@ -7,7 +7,7 @@ import androidx.activity.viewModels
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import com.gianlucaveschi.randomusersapp.presentation.ui.theme.RandomUsersAppTheme
-import com.gianlucaveschi.randomusersapp.presentation.ui.users.UsersList
+import com.gianlucaveschi.randomusersapp.presentation.ui.users.UsersListScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             RandomUsersAppTheme {
                 val state by viewModel.state.collectAsState()
-                UsersList(state)
+                UsersListScreen(state)
             }
         }
     }
