@@ -1,10 +1,15 @@
 package com.gianlucaveschi.randomusersapp.data.remote
 
-import com.gianlucaveschi.randomusersapp.data.model.RandomUsersApiResponse
+import com.gianlucaveschi.randomusersapp.data.model.UsersApiResponse
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface RandomUsersService {
 
-    @GET("?exc=login&page=1&results=10&seed=abc")
-    suspend fun getRandomUsers(): RandomUsersApiResponse
+    @GET("?exc=login")
+    suspend fun getUsers(
+        @Query("page") page: Int,
+        @Query("seed") seed: String,
+        @Query("results") results: Int
+    ): UsersApiResponse
 }

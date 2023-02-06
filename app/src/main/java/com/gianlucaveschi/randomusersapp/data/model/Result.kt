@@ -1,5 +1,6 @@
 package com.gianlucaveschi.randomusersapp.data.model
 
+// todo: Rename to User
 data class Result(
     val cell: String,
     val dob: Dob,

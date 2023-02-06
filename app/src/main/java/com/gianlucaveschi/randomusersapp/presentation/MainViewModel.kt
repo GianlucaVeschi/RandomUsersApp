@@ -16,9 +16,10 @@ class MainViewModel @Inject constructor(
 
     fun getRandomUsers() {
         viewModelScope.launch {
-            when (val response = randomUsersRepository.getRandomUsers()) {
+            when (val response = randomUsersRepository.getUsers()) {
                 is Resource.Success -> {
                     Timber.d("Success ${response.data}")
+                    Timber.d("Success ${response.data?.results?.size}")
                 }
                 is Resource.Error -> {
                     Timber.d("Error ${response.message}")
