@@ -7,7 +7,7 @@ import com.gianlucaveschi.randomusersapp.domain.repo.RandomUsersRepository
 import com.gianlucaveschi.randomusersapp.domain.util.Resource
 import javax.inject.Inject
 
-class RandomUsersRepositoryImpl @Inject constructor(
+class UsersRepositoryImpl @Inject constructor(
     private val api: RandomUsersService
 ) : RandomUsersRepository {
 
