@@ -30,7 +30,10 @@ this file will guide you through my mental workflow while developing this app.
 - Create a decent UI :heavy_check_mark:
 
 ## Implement Room
-- Include gradle dependencies
+- Include gradle dependencies :heavy_check_mark:
+- Create Entities :heavy_check_mark:
+- Create DAO & Database :heavy_check_mark:
+- Create business logic to save and retrieve data locally :heavy_check_mark:
 
 ## Implement Pagination
 - Define strategy
