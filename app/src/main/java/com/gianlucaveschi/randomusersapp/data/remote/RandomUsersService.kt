@@ -1,6 +1,6 @@
 package com.gianlucaveschi.randomusersapp.data.remote
 
-import com.gianlucaveschi.randomusersapp.data.users.UsersApiResponse
+import com.gianlucaveschi.randomusersapp.data.remote.users.UsersApiResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
