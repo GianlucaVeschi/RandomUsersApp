@@ -87,4 +87,7 @@ dependencies {
     implementation("io.coil-kt:coil-compose:$coil_version")
 
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
 }
