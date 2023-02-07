@@ -1,4 +1,4 @@
-package com.gianlucaveschi.randomusersapp.data.mapper
+package com.gianlucaveschi.randomusersapp.data.remote.mapper
 
 import com.gianlucaveschi.randomusersapp.data.remote.users.*
 import com.gianlucaveschi.randomusersapp.domain.model.*

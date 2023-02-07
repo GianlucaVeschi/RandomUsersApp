@@ -3,8 +3,8 @@ package com.gianlucaveschi.randomusersapp.data.repo
 import com.gianlucaveschi.randomusersapp.data.db.UsersDao
 import com.gianlucaveschi.randomusersapp.data.db.mapper.mapToEntityList
 import com.gianlucaveschi.randomusersapp.data.db.mapper.toDomain
-import com.gianlucaveschi.randomusersapp.data.mapper.mapToDomain
 import com.gianlucaveschi.randomusersapp.data.remote.RandomUsersService
+import com.gianlucaveschi.randomusersapp.data.remote.mapper.mapToDomain
 import com.gianlucaveschi.randomusersapp.domain.model.User
 import com.gianlucaveschi.randomusersapp.domain.model.Users
 import com.gianlucaveschi.randomusersapp.domain.repo.RandomUsersRepository

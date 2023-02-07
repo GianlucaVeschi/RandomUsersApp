@@ -1,7 +1,7 @@
 package com.gianlucaveschi.randomusersapp.data.repo
 
-import com.gianlucaveschi.randomusersapp.data.mapper.mapToDomain
 import com.gianlucaveschi.randomusersapp.data.remote.RandomUsersService
+import com.gianlucaveschi.randomusersapp.data.remote.mapper.mapToDomain
 import com.gianlucaveschi.randomusersapp.domain.model.Users
 import com.gianlucaveschi.randomusersapp.domain.repo.RandomUsersRepository
 import com.gianlucaveschi.randomusersapp.domain.util.Resource
