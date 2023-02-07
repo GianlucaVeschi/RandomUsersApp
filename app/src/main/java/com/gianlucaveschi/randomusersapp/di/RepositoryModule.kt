@@ -1,6 +1,6 @@
 package com.gianlucaveschi.randomusersapp.di
 
-import com.gianlucaveschi.randomusersapp.data.repo.UsersRepositoryImpl
+import com.gianlucaveschi.randomusersapp.data.repo.DatabaseUsersRepositoryImpl
 import com.gianlucaveschi.randomusersapp.domain.repo.RandomUsersRepository
 import dagger.Binds
 import dagger.Module
@@ -17,6 +17,6 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindRandomUsersRepository(
-        usersRepositoryImpl: UsersRepositoryImpl
+        databaseUsersRepositoryImpl: DatabaseUsersRepositoryImpl
     ): RandomUsersRepository
 }

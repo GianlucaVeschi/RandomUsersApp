@@ -9,6 +9,7 @@ buildscript {
         timber_version = "5.0.1"
         coil_version = "2.2.2"
         room_version = "2.5.0"
+        assertj_version = "3.21.0"
     }
     dependencies {
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_agp_version"
