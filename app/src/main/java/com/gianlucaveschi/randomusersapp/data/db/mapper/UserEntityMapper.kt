@@ -12,7 +12,7 @@ fun List<UserEntity>.toDomain(): List<User> {
     }
 }
 
-fun List<User>.toEntityList(): List<UserEntity> {
+fun List<User>.mapToEntityList(): List<UserEntity> {
     return this.map {
         it.mapFromDomain()
     }
