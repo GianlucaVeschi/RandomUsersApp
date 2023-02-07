@@ -35,6 +35,9 @@ this file will guide you through my mental workflow while developing this app.
 - Create DAO & Database :heavy_check_mark:
 - Create business logic to save and retrieve data locally :heavy_check_mark:
 
+![Database Access Strategy](https://user-images.githubusercontent.com/19254758/217319552-3a9bb508-6d0b-410e-afa7-8b02fc059606.png)
+
+
 ## Implement Pagination
 - Define strategy
 
