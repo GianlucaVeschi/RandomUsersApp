@@ -16,7 +16,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideWeatherApi(): RandomUsersService {
+    fun provideRandomUsersApi(): RandomUsersService {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())

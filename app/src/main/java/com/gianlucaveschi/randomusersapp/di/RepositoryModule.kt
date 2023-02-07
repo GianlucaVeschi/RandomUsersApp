@@ -16,7 +16,7 @@ abstract class RepositoryModule {
 
     @Binds
     @Singleton
-    abstract fun bindWeatherRepository(
+    abstract fun bindRandomUsersRepository(
         randomUsersRepositoryImpl: RandomUsersRepositoryImpl
     ): RandomUsersRepository
 }
