@@ -1,4 +1,4 @@
-package com.gianlucaveschi.randomusersapp.data.users
+package com.gianlucaveschi.randomusersapp.data.remote.users
 
 data class LocationApiModel(
     val city: String,

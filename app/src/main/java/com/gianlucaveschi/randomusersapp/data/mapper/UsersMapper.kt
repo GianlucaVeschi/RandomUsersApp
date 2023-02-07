@@ -1,6 +1,6 @@
 package com.gianlucaveschi.randomusersapp.data.mapper
 
-import com.gianlucaveschi.randomusersapp.data.users.*
+import com.gianlucaveschi.randomusersapp.data.remote.users.*
 import com.gianlucaveschi.randomusersapp.domain.model.*
 
 fun UsersApiResponse.mapToDomain(): Users {
