@@ -17,10 +17,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import coil.annotation.ExperimentalCoilApi
-import coil.compose.rememberImagePainter
+import coil.compose.rememberAsyncImagePainter
+import com.gianlucaveschi.randomusersapp.domain.model.User
 
-@OptIn(ExperimentalCoilApi::class)
 @Composable
 fun UsersListScreen(state: UsersState) {
     Box(
@@ -29,45 +28,7 @@ fun UsersListScreen(state: UsersState) {
         state.data?.users?.let { users ->
             LazyColumn {
                 items(users) { user ->
-                    Card(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .size(130.dp)
-                            .padding(10.dp)
-                            .wrapContentHeight(align = Alignment.Top),
-                        shape = CutCornerShape(topEnd = 20.dp),
-                        elevation = 8.dp,
-                    ) {
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.Start,
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Box(
-                                modifier = Modifier
-                                    .padding(10.dp)
-                                    .size(80.dp)
-                                    .clip(CircleShape)
-                            ) {
-                                Image(
-                                    painter = rememberImagePainter(user.picture.thumbnail),
-                                    contentDescription = null,
-                                    contentScale = ContentScale.Crop,
-                                    modifier = Modifier.matchParentSize()
-                                )
-                            }
-                            Spacer(modifier = Modifier.size(size = 16.dp))
-                            Column(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(end = 16.dp)
-                            ) {
-                                Text(text = "${user.name.first} ${user.name.last}")
-                                Spacer(modifier = Modifier.size(size = 8.dp))
-                                Text(text = user.email)
-                            }
-                        }
-                    }
+                    UserCard(user)
                 }
             }
         }
@@ -85,6 +46,49 @@ fun UsersListScreen(state: UsersState) {
                 textAlign = TextAlign.Center,
                 modifier = Modifier.align(Alignment.Center)
             )
+        }
+    }
+}
+
+@Composable
+private fun UserCard(user: User) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .size(130.dp)
+            .padding(10.dp)
+            .wrapContentHeight(align = Alignment.Top),
+        shape = CutCornerShape(topEnd = 20.dp),
+        elevation = 8.dp,
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Start,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(
+                modifier = Modifier
+                    .padding(10.dp)
+                    .size(80.dp)
+                    .clip(CircleShape)
+            ) {
+                Image(
+                    painter = rememberAsyncImagePainter(user.picture.thumbnail),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.matchParentSize()
+                )
+            }
+            Spacer(modifier = Modifier.size(size = 16.dp))
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(end = 16.dp)
+            ) {
+                Text(text = "${user.name.first} ${user.name.last}")
+                Spacer(modifier = Modifier.size(size = 8.dp))
+                Text(text = user.email)
+            }
         }
     }
 }
