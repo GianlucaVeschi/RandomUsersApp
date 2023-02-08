@@ -12,8 +12,12 @@ class GetUsersUseCase @Inject constructor(
 
     suspend operator fun invoke(): Resource<List<User>> = try {
         val users = usersRepository.getUsers()
-        Resource.Success(data = users.data?.mapToDomain())
-    } catch (e: Error) {
+        if (users.isNotEmpty()) {
+            Resource.Success(data = users.mapToDomain())
+        } else {
+            Resource.Error("Couldn't retrieve data")
+        }
+    } catch (e: Exception) {
         e.printStackTrace()
         Resource.Error(e.message ?: "An unknown error occurred.")
     }

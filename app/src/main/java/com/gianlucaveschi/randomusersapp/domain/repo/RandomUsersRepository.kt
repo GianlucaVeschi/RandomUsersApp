@@ -1,8 +1,7 @@
 package com.gianlucaveschi.randomusersapp.domain.repo
 
 import com.gianlucaveschi.randomusersapp.data.user.UserDataModel
-import com.gianlucaveschi.randomusersapp.domain.util.Resource
 
 interface RandomUsersRepository {
-    suspend fun getUsers(): Resource<List<UserDataModel>>
+    suspend fun getUsers(): List<UserDataModel>
 }
