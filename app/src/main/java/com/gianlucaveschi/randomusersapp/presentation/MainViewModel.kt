@@ -23,11 +23,11 @@ class MainViewModel @Inject constructor(
 
     fun getRandomUsers() {
         viewModelScope.launch {
-            updateLoadingState()
+            setStateToLoading()
             when (val response = usersRepository.getUsers()) {
                 is Resource.Success -> {
                     response.data?.run {
-                        updateSuccessState(this)
+                        onUsersFetched(this)
                     } ?: updateErrorState(
                         errorMessage = "Response was successful but data is null"
                     )
@@ -39,7 +39,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun updateSuccessState(users: Users) {
+    private fun onUsersFetched(users: Users) {
         Timber.d("Success $users")
         _state.value = _state.value.copy(
             data = users,
@@ -57,7 +57,7 @@ class MainViewModel @Inject constructor(
         )
     }
 
-    private fun updateLoadingState() {
+    private fun setStateToLoading() {
         Timber.d("Loading...")
         _state.value = _state.value.copy(
             isLoading = true,
