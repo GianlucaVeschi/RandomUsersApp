@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val randomUsersRepository: RandomUsersRepository
+    private val usersRepository: RandomUsersRepository
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(UsersState(isLoading = true))
@@ -24,7 +24,7 @@ class MainViewModel @Inject constructor(
     fun getRandomUsers() {
         viewModelScope.launch {
             updateLoadingState()
-            when (val response = randomUsersRepository.getUsers()) {
+            when (val response = usersRepository.getUsers()) {
                 is Resource.Success -> {
                     response.data?.run {
                         updateSuccessState(this)
