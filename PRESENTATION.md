@@ -70,3 +70,7 @@ The codebase is intentionally dissamenated with logs, so that it's possible to s
 
 ## Scenario 3: Data is not cached in the app, internet not available.
 ![image](https://user-images.githubusercontent.com/19254758/217559971-3dedc0b3-c243-41a9-9cec-88b9dbedac42.png)
+
+# Video 📹
+![video](https://user-images.githubusercontent.com/19254758/217660718-837345d6-9eda-489f-86bd-2311383a87a1.gif)
+
