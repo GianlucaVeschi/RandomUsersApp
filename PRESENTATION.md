@@ -42,12 +42,11 @@ this file will guide you through my mental workflow while developing this app.
 - Define strategy
 
 ## Add tests
-- Test Repository
-- Test UseCases
+- Test Repository :heavy_check_mark:
 - Test ViewModel
 
 # Logs
-The codebase is intentionally dissamenated with logs, so that it's possible to see which methods are called.
+The codebase is intentionally disseminated with logs, so that it's possible to see which methods are called.
 
 ## Scenario 1: App is freshly installed, caches are empty, data is fetched from the network.
 ![image](https://user-images.githubusercontent.com/19254758/217559446-1e1ba7ea-57ce-4209-ad92-af8403b390b4.png)

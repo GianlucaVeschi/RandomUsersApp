@@ -1,14 +1,13 @@
-package com.gianlucaveschi.weatherapp.domain.repo
+package com.gianlucaveschi.randomusersapp.domain.repo
 
+import com.gianlucaveschi.randomusersapp.BaseJunitTest
 import com.gianlucaveschi.randomusersapp.data.db.UsersDao
 import com.gianlucaveschi.randomusersapp.data.db.users.UserEntity
 import com.gianlucaveschi.randomusersapp.data.remote.RandomUsersService
 import com.gianlucaveschi.randomusersapp.data.remote.users.*
 import com.gianlucaveschi.randomusersapp.data.repo.UsersRepositoryImpl
 import com.gianlucaveschi.randomusersapp.domain.model.*
-import com.gianlucaveschi.randomusersapp.domain.repo.RandomUsersRepository
 import com.gianlucaveschi.randomusersapp.domain.util.Resource
-import com.gianlucaveschi.weatherapp.BaseJunitTest
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk

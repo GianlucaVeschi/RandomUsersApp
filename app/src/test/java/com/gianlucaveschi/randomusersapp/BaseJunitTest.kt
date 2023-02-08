@@ -1,4 +1,4 @@
-package com.gianlucaveschi.weatherapp
+package com.gianlucaveschi.randomusersapp
 
 import androidx.annotation.CallSuper
 import kotlinx.coroutines.ExperimentalCoroutinesApi
