@@ -2,8 +2,8 @@ package com.gianlucaveschi.randomusersapp.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.gianlucaveschi.randomusersapp.domain.model.Users
-import com.gianlucaveschi.randomusersapp.domain.repo.RandomUsersRepository
+import com.gianlucaveschi.randomusersapp.domain.interactors.GetUsersUseCase
+import com.gianlucaveschi.randomusersapp.domain.model.User
 import com.gianlucaveschi.randomusersapp.domain.util.Resource
 import com.gianlucaveschi.randomusersapp.presentation.ui.users.UsersState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val usersRepository: RandomUsersRepository
+    private val getUsersUseCase: GetUsersUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(UsersState(isLoading = true))
@@ -24,7 +24,7 @@ class MainViewModel @Inject constructor(
     fun getRandomUsers() {
         viewModelScope.launch {
             setStateToLoading()
-            when (val response = usersRepository.getUsers()) {
+            when (val response = getUsersUseCase()) {
                 is Resource.Success -> {
                     response.data?.run {
                         onUsersFetched(this)
@@ -39,7 +39,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun onUsersFetched(users: Users) {
+    private fun onUsersFetched(users: List<User>) {
         Timber.d("Success $users")
         _state.value = _state.value.copy(
             data = users,

@@ -25,7 +25,7 @@ fun UsersListScreen(state: UsersState) {
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
-        state.data?.users?.let { users ->
+        state.data?.let { users ->
             LazyColumn {
                 items(users) { user ->
                     UserCard(user)

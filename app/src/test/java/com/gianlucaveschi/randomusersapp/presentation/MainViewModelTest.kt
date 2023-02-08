@@ -2,8 +2,8 @@ package com.gianlucaveschi.randomusersapp.presentation
 
 import com.gianlucaveschi.randomusersapp.BaseJunitTest
 import com.gianlucaveschi.randomusersapp.MainCoroutineRule
-import com.gianlucaveschi.randomusersapp.domain.model.Users
-import com.gianlucaveschi.randomusersapp.domain.repo.RandomUsersRepository
+import com.gianlucaveschi.randomusersapp.domain.interactors.GetUsersUseCase
+import com.gianlucaveschi.randomusersapp.domain.model.User
 import com.gianlucaveschi.randomusersapp.domain.util.Resource
 import com.gianlucaveschi.randomusersapp.presentation.ui.users.UsersState
 import io.mockk.coEvery
@@ -22,14 +22,14 @@ import org.junit.Test
 @ExperimentalCoroutinesApi
 class MainViewModelTest : BaseJunitTest<MainViewModel>() {
 
-    private val usersRepository: RandomUsersRepository = mockk()
+    private val getUsersUseCase: GetUsersUseCase = mockk()
 
     @ExperimentalCoroutinesApi
     @get:Rule
     val mainCoroutineRule = MainCoroutineRule()
 
     override fun initSelf() = MainViewModel(
-        usersRepository = usersRepository
+        getUsersUseCase = getUsersUseCase
     )
 
     @Test
@@ -40,8 +40,8 @@ class MainViewModelTest : BaseJunitTest<MainViewModel>() {
 
     @Test
     fun `assert initial state`() = runTest {
-        val users = Users(listOf())
-        coEvery { usersRepository.getUsers() } returns Resource.Success(users)
+        val users = listOf<User>()
+        coEvery { getUsersUseCase() } returns Resource.Success(users)
 
         assertEquals(
             UsersState(isLoading = true),
@@ -51,8 +51,8 @@ class MainViewModelTest : BaseJunitTest<MainViewModel>() {
 
     @Test
     fun `assert success state`() = runTest {
-        val users = Users(listOf())
-        coEvery { usersRepository.getUsers() } returns Resource.Success(users)
+        val users = listOf<User>()
+        coEvery { getUsersUseCase() } returns Resource.Success(users)
 
         // Create an empty collector for the StateFlow
         val listOfEmittedResult = mutableListOf<UsersState>()

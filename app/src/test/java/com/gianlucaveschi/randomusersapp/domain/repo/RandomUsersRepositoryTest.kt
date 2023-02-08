@@ -6,6 +6,10 @@ import com.gianlucaveschi.randomusersapp.data.db.users.UserEntity
 import com.gianlucaveschi.randomusersapp.data.remote.RandomUsersService
 import com.gianlucaveschi.randomusersapp.data.remote.users.*
 import com.gianlucaveschi.randomusersapp.data.repo.UsersRepositoryImpl
+import com.gianlucaveschi.randomusersapp.data.user.IdDataModel
+import com.gianlucaveschi.randomusersapp.data.user.NameDataModel
+import com.gianlucaveschi.randomusersapp.data.user.PictureDataModel
+import com.gianlucaveschi.randomusersapp.data.user.UserDataModel
 import com.gianlucaveschi.randomusersapp.domain.model.*
 import com.gianlucaveschi.randomusersapp.domain.util.Resource
 import io.mockk.coEvery
@@ -51,7 +55,7 @@ class RandomUsersRepositoryTest : BaseJunitTest<RandomUsersRepository>() {
             )
         )
 
-        val result: Resource<Users> = systemUnderTest.getUsers()
+        val result: Resource<List<UserDataModel>> = systemUnderTest.getUsers()
 
         coVerify(exactly = 0) {
             api.getUsers(
@@ -130,7 +134,7 @@ class RandomUsersRepositoryTest : BaseJunitTest<RandomUsersRepository>() {
         )
 
 
-        val result: Resource<Users> = systemUnderTest.getUsers()
+        val result: Resource<List<UserDataModel>> = systemUnderTest.getUsers()
 
         coVerify(exactly = 1) {
             api.getUsers(
@@ -159,25 +163,23 @@ class RandomUsersRepositoryTest : BaseJunitTest<RandomUsersRepository>() {
                 .toResponseBody("application/json".toMediaTypeOrNull())
         )
 
-        val result: Resource<Users> = systemUnderTest.getUsers()
+        val result: Resource<List<UserDataModel>> = systemUnderTest.getUsers()
 
         assertThat(result)
             .isInstanceOf(Resource.Error::class.java)
     }
 
     private companion object {
-        val mockedUsersList = Users(
-            users = listOf(
-                User(
-                    email = "example@email.com",
-                    gender = "Male",
-                    id = Id(name = "1234567890", value = "1234567890"),
-                    name = Name(first = "John", last = "Doe", title = "Mr"),
-                    picture = Picture(
-                        large = "https://example.com/large.jpg",
-                        medium = "https://example.com/medium.jpg",
-                        thumbnail = "https://example.com/thumbnail.jpg"
-                    )
+        val mockedUsersList = listOf(
+            UserDataModel(
+                email = "example@email.com",
+                gender = "Male",
+                id = IdDataModel(name = "1234567890", value = "1234567890"),
+                name = NameDataModel(first = "John", last = "Doe", title = "Mr"),
+                picture = PictureDataModel(
+                    large = "https://example.com/large.jpg",
+                    medium = "https://example.com/medium.jpg",
+                    thumbnail = "https://example.com/thumbnail.jpg"
                 )
             )
         )

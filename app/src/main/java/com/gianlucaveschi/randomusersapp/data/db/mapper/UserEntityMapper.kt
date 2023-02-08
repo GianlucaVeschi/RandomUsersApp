@@ -1,24 +1,24 @@
 package com.gianlucaveschi.randomusersapp.data.db.mapper
 
 import com.gianlucaveschi.randomusersapp.data.db.users.UserEntity
-import com.gianlucaveschi.randomusersapp.domain.model.Id
-import com.gianlucaveschi.randomusersapp.domain.model.Name
-import com.gianlucaveschi.randomusersapp.domain.model.Picture
-import com.gianlucaveschi.randomusersapp.domain.model.User
+import com.gianlucaveschi.randomusersapp.data.user.IdDataModel
+import com.gianlucaveschi.randomusersapp.data.user.NameDataModel
+import com.gianlucaveschi.randomusersapp.data.user.PictureDataModel
+import com.gianlucaveschi.randomusersapp.data.user.UserDataModel
 
-fun List<UserEntity>.toDomain(): List<User> {
+fun List<UserEntity>.mapToDataModel(): List<UserDataModel> {
     return this.map {
-        it.toDomain()
+        it.mapToDataModel()
     }
 }
 
-fun List<User>.mapToEntityList(): List<UserEntity> {
+fun List<UserDataModel>.mapToEntityList(): List<UserEntity> {
     return this.map {
-        it.mapFromDomain()
+        it.mapToEntity()
     }
 }
 
-fun User.mapFromDomain() : UserEntity = UserEntity(
+fun UserDataModel.mapToEntity(): UserEntity = UserEntity(
     email = this.email,
     id = this.id.name,
     idValue = this.id.value,
@@ -31,19 +31,19 @@ fun User.mapFromDomain() : UserEntity = UserEntity(
     titleName = this.name.title,
 )
 
-fun UserEntity.toDomain() = User(
+fun UserEntity.mapToDataModel() = UserDataModel(
     email = this.email,
     gender = this.gender,
-    id = Id(
+    id = IdDataModel(
         name = this.id,
         value = this.idValue,
     ),
-    name = Name(
+    name = NameDataModel(
         first = this.firstName,
         last = this.lastName,
         title = this.titleName,
     ),
-    picture = Picture(
+    picture = PictureDataModel(
         large = this.largePicture,
         medium = this.mediumPicture,
         thumbnail = this.thumbnailPicture
