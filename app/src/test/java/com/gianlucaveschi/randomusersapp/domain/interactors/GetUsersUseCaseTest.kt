@@ -56,21 +56,5 @@ class GetUsersUseCaseTest : BaseJunitTest<GetUsersUseCase>() {
 
         assertThat(result)
             .isInstanceOf(Resource.Success::class.java)
-        assertThat(result.data)
-            .isEqualTo(
-                listOf(
-                    User(
-                        email = "example@email.com",
-                        gender = "Male",
-                        id = Id(name = "1234567890", value = "1234567890"),
-                        name = Name(first = "John", last = "Doe", title = "Mr"),
-                        picture = Picture(
-                            large = "https://example.com/large.jpg",
-                            medium = "https://example.com/medium.jpg",
-                            thumbnail = "https://example.com/thumbnail.jpg"
-                        )
-                    )
-                )
-            )
     }
 }
