@@ -1,8 +1,6 @@
 package com.gianlucaveschi.randomusersapp.data.db
 
-import com.gianlucaveschi.randomusersapp.data.db.mapper.mapToDataModel
-import com.gianlucaveschi.randomusersapp.data.db.mapper.mapToEntityList
-import com.gianlucaveschi.randomusersapp.data.user.UserDataModel
+import com.gianlucaveschi.randomusersapp.data.db.users.UserEntity
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -11,20 +9,20 @@ class LocalDataSource @Inject constructor(
 ) {
 
     suspend fun saveDataLocally(
-        users: List<UserDataModel>?
+        users: List<UserEntity>?
     ) {
         users.takeIf { !it.isNullOrEmpty() }?.let {
             Timber.d("Saving data locally...")
-            dao.insertUsers(it.mapToEntityList())
+            dao.insertUsers(it)
             Timber.d("Saving data locally succeded :)")
         }
     }
 
-    suspend fun getDataFromCache(): List<UserDataModel> {
+    suspend fun getDataFromCache(): List<UserEntity> {
         val dataFromCache = dao.getAllUsers()
         return if (dataFromCache.isNotEmpty()) {
             Timber.d("Cache data retrieval succeeded :)")
-            dataFromCache.mapToDataModel()
+            dataFromCache
         } else {
             Timber.d("Cache data retrieval failed :(")
             listOf()

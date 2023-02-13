@@ -1,8 +1,11 @@
 package com.gianlucaveschi.randomusersapp.data.repo
 
 import com.gianlucaveschi.randomusersapp.data.db.LocalDataSource
+import com.gianlucaveschi.randomusersapp.data.db.mapper.mapToDomain
+import com.gianlucaveschi.randomusersapp.data.db.mapper.mapToEntityList
 import com.gianlucaveschi.randomusersapp.data.remote.RemoteDataSource
-import com.gianlucaveschi.randomusersapp.data.user.UserDataModel
+import com.gianlucaveschi.randomusersapp.data.remote.mapper.mapToDomain
+import com.gianlucaveschi.randomusersapp.domain.model.User
 import com.gianlucaveschi.randomusersapp.domain.repo.RandomUsersRepository
 import javax.inject.Inject
 
@@ -11,12 +14,12 @@ class UsersRepositoryImpl @Inject constructor(
     private val localDataSource: LocalDataSource
 ) : RandomUsersRepository {
 
-    override suspend fun getUsers(): List<UserDataModel> {
-        val cachedData = localDataSource.getDataFromCache()
+    override suspend fun getUsers(): List<User> {
+        val cachedData = localDataSource.getDataFromCache().mapToDomain()
         return cachedData.ifEmpty {
-            val networkData = remoteDataSource.getDataFromNetwork()
-            localDataSource.saveDataLocally(networkData)
-            localDataSource.getDataFromCache()
+            val networkData = remoteDataSource.getDataFromNetwork()?.mapToDomain()
+            localDataSource.saveDataLocally(networkData?.mapToEntityList())
+            localDataSource.getDataFromCache().mapToDomain()
         }
     }
 }

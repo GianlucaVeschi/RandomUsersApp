@@ -1,10 +1,10 @@
 package com.gianlucaveschi.randomusersapp.domain.repo
 
 import com.gianlucaveschi.randomusersapp.BaseJunitTest
-import com.gianlucaveschi.randomusersapp.data.db.UsersDao
+import com.gianlucaveschi.randomusersapp.data.db.LocalDataSource
 import com.gianlucaveschi.randomusersapp.data.db.mapper.mapToEntityList
 import com.gianlucaveschi.randomusersapp.data.db.users.UserEntity
-import com.gianlucaveschi.randomusersapp.data.remote.RandomUsersService
+import com.gianlucaveschi.randomusersapp.data.remote.RemoteDataSource
 import com.gianlucaveschi.randomusersapp.data.remote.users.*
 import com.gianlucaveschi.randomusersapp.data.repo.UsersRepositoryImpl
 import com.gianlucaveschi.randomusersapp.data.user.IdDataModel
@@ -28,18 +28,18 @@ import retrofit2.Response
 @ExperimentalCoroutinesApi
 class RandomUsersRepositoryTest : BaseJunitTest<RandomUsersRepository>() {
 
-    private val api: RandomUsersService = mockk()
-    private val dao: UsersDao = mockk()
+    private val remoteDataSource: RemoteDataSource = mockk()
+    private val localDataSource: LocalDataSource = mockk()
 
     override fun initSelf() = UsersRepositoryImpl(
-        api = api,
-        dao = dao
+        remoteDataSource = remoteDataSource,
+        localDataSource = localDataSource
     )
 
     @Test
     fun `GIVEN a successful database hit THEN return successful response`() = runTest {
         coEvery {
-            dao.getAllUsers()
+            localDataSource.getDataFromCache()
         } returns listOf(
             UserEntity(
                 id = "1234567890",
@@ -58,7 +58,7 @@ class RandomUsersRepositoryTest : BaseJunitTest<RandomUsersRepository>() {
         val result: List<UserDataModel> = systemUnderTest.getUsers()
 
         coVerify(exactly = 0) {
-            api.getUsers(
+            remoteDataSource.getUsers(
                 page = 1,
                 seed = "abc",
                 results = 20
@@ -115,9 +115,9 @@ class RandomUsersRepositoryTest : BaseJunitTest<RandomUsersRepository>() {
                 registered = RegisteredApiModel(date = "2000-01-01T00:00:00.000Z", age = 23)
             )
         )
-        coEvery { dao.getAllUsers() } returns listOf()
+        coEvery { localDataSource.getAllUsers() } returns listOf()
         coEvery {
-            api.getUsers(
+            remoteDataSource.getUsers(
                 page = 1,
                 seed = "abc",
                 results = 20
@@ -134,14 +134,14 @@ class RandomUsersRepositoryTest : BaseJunitTest<RandomUsersRepository>() {
             )
         )
         coEvery {
-            dao.insertUsers(mockedUsersList.mapToEntityList())
+            localDataSource.insertUsers(mockedUsersList.mapToEntityList())
         } returns longArrayOf()
 
 
         val result: List<UserDataModel> = systemUnderTest.getUsers()
 
         coVerify(exactly = 1) {
-            api.getUsers(
+            remoteDataSource.getUsers(
                 page = 1,
                 seed = "abc",
                 results = 20
@@ -155,9 +155,9 @@ class RandomUsersRepositoryTest : BaseJunitTest<RandomUsersRepository>() {
     @Test
     fun `GIVEN an empty database hit AND an unsuccessful api call THEN return empty list`() =
         runTest {
-            coEvery { dao.getAllUsers() } returns listOf()
+            coEvery { localDataSource.getAllUsers() } returns listOf()
             coEvery {
-                api.getUsers(
+                remoteDataSource.getUsers(
                     page = 1,
                     seed = "abc",
                     results = 20

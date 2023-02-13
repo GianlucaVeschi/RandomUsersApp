@@ -1,38 +1,38 @@
 package com.gianlucaveschi.randomusersapp.data.remote.mapper
 
 import com.gianlucaveschi.randomusersapp.data.remote.users.*
-import com.gianlucaveschi.randomusersapp.data.user.IdDataModel
-import com.gianlucaveschi.randomusersapp.data.user.NameDataModel
-import com.gianlucaveschi.randomusersapp.data.user.PictureDataModel
-import com.gianlucaveschi.randomusersapp.data.user.UserDataModel
+import com.gianlucaveschi.randomusersapp.domain.model.Id
+import com.gianlucaveschi.randomusersapp.domain.model.Name
+import com.gianlucaveschi.randomusersapp.domain.model.Picture
+import com.gianlucaveschi.randomusersapp.domain.model.User
 
-fun UsersApiResponse.mapToData(): List<UserDataModel> {
+fun UsersApiResponse.mapToDomain(): List<User> {
     return this.results.map { user ->
-        user.mapToData()
+        user.mapToDomain()
     }
 }
 
-fun UserApiModel.mapToData() = UserDataModel(
+fun UserApiModel.mapToDomain() = User(
     email = this.email,
     gender = this.gender,
-    id = this.id.mapToData(),
-    name = this.name.mapToData(),
-    picture = this.picture.mapToData()
+    id = this.id.mapToDomain(),
+    name = this.name.mapToDomain(),
+    picture = this.picture.mapToDomain()
 )
 
 
-private fun IdApiModel.mapToData() = IdDataModel(
+private fun IdApiModel.mapToDomain() = Id(
     name = this.name,
     value = this.value
 )
 
-private fun NameApiModel.mapToData() = NameDataModel(
+private fun NameApiModel.mapToDomain() = Name(
     title = this.title,
     first = this.first,
     last = this.last
 )
 
-private fun PictureApiModel.mapToData() = PictureDataModel(
+private fun PictureApiModel.mapToDomain() = Picture(
     large = this.large,
     medium = this.medium,
     thumbnail = this.thumbnail
