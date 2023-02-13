@@ -1,10 +1,6 @@
 package com.gianlucaveschi.randomusersapp.domain.interactors
 
 import com.gianlucaveschi.randomusersapp.BaseJunitTest
-import com.gianlucaveschi.randomusersapp.data.user.IdDataModel
-import com.gianlucaveschi.randomusersapp.data.user.NameDataModel
-import com.gianlucaveschi.randomusersapp.data.user.PictureDataModel
-import com.gianlucaveschi.randomusersapp.data.user.UserDataModel
 import com.gianlucaveschi.randomusersapp.domain.model.Id
 import com.gianlucaveschi.randomusersapp.domain.model.Name
 import com.gianlucaveschi.randomusersapp.domain.model.Picture
@@ -42,12 +38,12 @@ class GetUsersUseCaseTest : BaseJunitTest<GetUsersUseCase>() {
     @Test
     fun `WHEN repository returns data THEN return success`() = runTest {
         val usersDataModel = listOf(
-            UserDataModel(
+            User(
                 email = "example@email.com",
                 gender = "Male",
-                id = IdDataModel(name = "1234567890", value = "1234567890"),
-                name = NameDataModel(first = "John", last = "Doe", title = "Mr"),
-                picture = PictureDataModel(
+                id = Id(name = "1234567890", value = "1234567890"),
+                name = Name(first = "John", last = "Doe", title = "Mr"),
+                picture = Picture(
                     large = "https://example.com/large.jpg",
                     medium = "https://example.com/medium.jpg",
                     thumbnail = "https://example.com/thumbnail.jpg"
