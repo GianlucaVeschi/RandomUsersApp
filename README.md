@@ -7,7 +7,7 @@ As Always, I first created a "Workflow". Usually I use Notion, but this time I s
 
 I mostly pushed my commits directly into the `:feature` branch, but for the database creation I created a new branch called `:implement_database`. If I had more time I would have done the same for pagination.
 
-I didn't feel stressed during the coding challenge, I had plenty of time to dig in into old projects and medium articles. Furthermore, I am going through a lot of coding challenges and I am taking each and one of them as a learning opportunity, so I am definitely looking forward to your feedback!
+I always take coding challenges as a learning opportunity, so I am definitely looking forward to your feedback!
 
 # Workflow ⏳
 - Read Instructions :heavy_check_mark:
@@ -60,7 +60,7 @@ I decided to use MVVM because it's the architecture with which I am mostly famil
 
 
 # Logs 🖥️
-The codebase is intentionally dissamenated with logs, so that it's possible to see which methods are called.
+The codebase is intentionally disseminated with logs, so that it's possible to see which methods are called.
 
 ## Scenario 1: App is freshly installed, caches are empty, data is fetched from the network.
 ![image](https://user-images.githubusercontent.com/19254758/217559446-1e1ba7ea-57ce-4209-ad92-af8403b390b4.png)
